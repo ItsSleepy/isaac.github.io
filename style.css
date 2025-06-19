@@ -2,7 +2,6 @@
 body {
     /* Use Inter for sans-serif and Roboto Mono for monospaced text */
     font-family: 'Inter', sans-serif; 
-    overflow: hidden; /* Hide scrollbars initially */
     scroll-behavior: smooth; /* Smooth scrolling for anchor links */
 }
 
