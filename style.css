@@ -1,0 +1,79 @@
+/* Custom styles for the page */
+body {
+    /* Use Inter for sans-serif and Roboto Mono for monospaced text */
+    font-family: 'Inter', sans-serif; 
+    overflow: hidden; /* Hide scrollbars initially */
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+.font-mono {
+    font-family: 'Roboto Mono', monospace;
+}
+
+.font-sans {
+     font-family: 'Inter', sans-serif;
+}
+
+/* Transition classes for smooth fade effects */
+.fade-in {
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+.fade-out {
+    animation: fadeOut 1s ease-in-out forwards;
+}
+
+#homepage {
+    display: none; /* Initially hide the homepage */
+    opacity: 0;
+}
+
+#homepage.visible {
+    display: block;
+}
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.modal-content {
+    background-color: #1F2937; /* bg-gray-800 */
+    padding: 2rem;
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+    max-width: 90%;
+    width: 500px;
+    position: relative;
+    text-align: center;
+}
+
+/* Keyframe animations for the fade effects */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
