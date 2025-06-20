@@ -20,88 +20,82 @@
         <!-- Header/Navigation Bar -->
         <header class="bg-gray-800/80 shadow-md backdrop-blur-sm sticky top-0 z-40">
             <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <!-- Link back to the main portfolio page -->
-                <a href="index.html" class="text-2xl font-bold font-mono text-white">MyPortfolio<span class="text-cyan-400">;</span></a>
-                <div>
-                    <!-- Navigation links -->
-                    <a href="index.html#about" class="text-gray-300 hover:text-cyan-400 px-4 transition-colors duration-300">About</a>
-                    <a href="index.html#skills" class="text-gray-300 hover:text-cyan-400 px-4 transition-colors duration-300">Skills</a>
-                    <a href="index.html#projects" class="text-gray-300 hover:text-cyan-400 px-4 transition-colors duration-300">Projects</a>
-                    <a href="about.html" class="text-cyan-400 font-bold px-4 transition-colors duration-300">Personal</a>
-                    <a href="index.html#contact" class="text-gray-300 hover:text-cyan-400 px-4 transition-colors duration-300">Contact</a>
+                 <a href="index.html" class="text-2xl font-bold font-mono text-white">MyPortfolio<span class="text-cyan-400">;</span></a>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="index.html#about" class="text-gray-300 hover:text-cyan-400 px-4 py-2 rounded-md transition-colors duration-300">About</a>
+                    <a href="index.html#skills" class="text-gray-300 hover:text-cyan-400 px-4 py-2 rounded-md transition-colors duration-300">Skills</a>
+                    <a href="index.html#projects" class="text-gray-300 hover:text-cyan-400 px-4 py-2 rounded-md transition-colors duration-300">Projects</a>
+                    <a href="about.html" class="text-cyan-400 font-bold px-4 py-2 rounded-md transition-colors duration-300">Personal</a>
+                    <a href="index.html#contact" class="text-gray-300 hover:text-cyan-400 px-4 py-2 rounded-md transition-colors duration-300">Contact</a>
                 </div>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button-about" class="md:hidden text-white text-2xl focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </header>
+        
+        <!-- Mobile Menu (Overlay) for About Page -->
+        <div id="mobile-menu-about" class="hidden fixed inset-0 bg-gray-900 z-50 flex flex-col items-center justify-center">
+            <button id="close-mobile-menu-button-about" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
+            <a href="index.html#about" class="mobile-menu-link text-3xl text-gray-300 hover:text-cyan-400 mb-8">About</a>
+            <a href="index.html#skills" class="mobile-menu-link text-3xl text-gray-300 hover:text-cyan-400 mb-8">Skills</a>
+            <a href="index.html#projects" class="mobile-menu-link text-3xl text-gray-300 hover:text-cyan-400 mb-8">Projects</a>
+            <a href="about.html" class="mobile-menu-link text-3xl text-cyan-400 mb-8">Personal</a>
+            <a href="index.html#contact" class="mobile-menu-link text-3xl text-gray-300 hover:text-cyan-400">Contact</a>
+        </div>
 
         <!-- About Me Section -->
-        <section id="personal-about" class="py-20">
-            <div class="container mx-auto px-6">
-                <h1 class="text-5xl font-bold text-center text-white mb-4">More Personally About Me</h1>
-                <p class="text-xl text-center text-gray-400 max-w-3xl mx-auto mb-16">Other than coding, I enjoy...</p>
+        <section id="personal-about" class="py-20 px-4">
+            <div class="container mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold text-center text-white mb-4">More Personally About Me</h1>
+                <p class="text-lg md:text-xl text-center text-gray-400 max-w-3xl mx-auto mb-16">Other than coding, I enjoy...</p>
 
                 <!-- Hobbies Section Wrapper -->
                 <div class="space-y-12">
-
                     <!-- Sports Row -->
-                    <div class="flex flex-col md:flex-row-reverse items-center bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-                        <div class="md:w-1/2">
-                            <img src="photos/sports.png" alt="Tennis racket on a court" class="w-full h-full object-cover">
+                    <div class="flex flex-col md:flex-row-reverse items-stretch bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                        <div class="w-full md:w-1/2">
+                             <img src="photos/sports.png" alt="Tennis racket on a court" class="w-full h-full object-cover">
                         </div>
-                        <div class="md:w-1/2 p-8 md:p-12">
-                            <h2 class="text-3xl font-bold text-green-400 mb-4 flex items-center gap-3"><i class="fas fa-person-running"></i> Sports</h2>
-                            <ul class="space-y-3 text-lg">
-                                <li class="flex items-center gap-3"><img src="photos/tennis-logo.png" alt="Tennis Logo" width="130px" height="130px"><strong>I train Tennis mainly</strong></li>
-                                <h2 class="text-3xl font-bold text-green-400 mb-4 flex items-center gap-3"><i class="fas fa-person-running"></i>but I also know...</h2>
-                                <li class="flex items-center gap-3"><img src="photos/baseball-logo.png" alt="Baseball Logo" width="130px" height="130px"> Baseball</li>
-                                <li class="flex items-center gap-3"><img src="photos/volleyball-logo.png" alt="Volleyball Logo" width="130px" height="130px"> Volleyball</li>
-                                <li class="flex items-center gap-3"><img src="photos/badminton-logo.png" alt="Badminton Logo" width="130px" height="130px"> Badminton</li>
+                        <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                            <h2 class="text-3xl font-bold text-green-400 mb-2 flex items-center gap-3"><i class="fas fa-person-running"></i> Sports</h2>
+                            <p class="text-green-200/70 mb-4">I train Tennis mainly, but I also know...</p>
+                            <ul class="space-y-4 text-lg">
+                                <li class="flex items-center gap-4"><img src="photos/tennis-logo.png" alt="Tennis Logo" width="130px" height="130px"> Tennis</li>
+                                <li class="flex items-center gap-4"><img src="photos/baseball-logo.png" alt="Baseball Logo" width="130px" height="130px"> Baseball</li>
+                                <li class="flex items-center gap-4"><img src="photos/volleyball-logo.png" alt="Volleyball Logo" width="130px" height="130px"> Volleyball</li>
+                                <li class="flex items-center gap-4"><img src="photos/badminton-logo.png" alt="Badminton Logo" width="130px" height="130px"> Badminton</li>
                             </ul>
                         </div>
                     </div>
 
                     <!-- Gaming Row -->
-                    <div class="flex flex-col md:flex-row items-center bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-                        <div class="md:w-1/2">
-                             <img src="photos/Gaming.png" alt="A modern PC gaming setup" class="w-full h-full object-cover">
+                    <div class="flex flex-col md:flex-row items-stretch bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                        <div class="w-full md:w-1/2">
+                              <img src="photos/Gaming.png" alt="A modern PC gaming setup" class="w-full h-full object-cover">
                         </div>
-                        <div class="md:w-1/2 p-8 md:p-12">
+                        <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
                             <h2 class="text-3xl font-bold text-purple-400 mb-4 flex items-center gap-3"><i class="fas fa-gamepad"></i> Gaming</h2>
                             <p class="mb-4 text-lg flex items-center gap-3"><i class="fas fa-desktop text-xl text-purple-400/50 w-6 text-center"></i> I primarily play on PC.</p>
                             <div class="space-y-3">
-                                <a href="https://warthunder.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors">
-                                    <img src="photos/war-thunder-logo.png" alt="War Thunder Logo" class="h-10 w-auto object-contain">
-                                    <span class="font-semibold text-lg">War Thunder</span>
-                                </a>
-                                <a href="https://www.minecraft.net/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors">
-                                    <img src="photos/minecraft-logo.png" alt="Minecraft Logo" class="h-10 w-auto object-contain">
-                                    <span class="font-semibold text-lg">Minecraft</span>
-                                </a>
-                                <a href="https://www.rocketleague.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors">
-                                    <img src="photos/Rocket-League-Emblem.png" alt="Rocket League Logo" class="h-10 w-auto object-contain">
-                                    <span class="font-semibold text-lg">Rocket League</span>
-                                </a>
-                                <a href="https://www.counter-strike.net/cs2" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors">
-                                    <img src="photos/CS-logo.png" alt="CS2 Logo" class="h-10 w-auto object-contain">
-                                    <span class="font-semibold text-lg">CS2</span>
-                                </a>
-                                <a href="https://www.roblox.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors">
-                                    <img src="photos/roblox-logo.png" alt="Roblox Logo" class="h-10 w-auto object-contain">
-                                    <span class="font-semibold text-lg">Roblox</span>
-                                </a>
-                                <a href="https://www.ea.com/games/f1/f1-25" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors">
-                                    <img src="photos/f1-logo.png" alt="F1 25 Logo" class="h-10 w-auto object-contain">
-                                    <span class="font-semibold text-lg">F1 25</span>
-                                </a>
+                                <a href="https://warthunder.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors"><img src="photos/war-thunder-logo.png" alt="War Thunder Logo" class="h-10 w-auto object-contain"><span class="font-semibold text-lg">War Thunder</span></a>
+                                <a href="https://www.minecraft.net/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors"><img src="photos/minecraft-logo.png" alt="Minecraft Logo" class="h-10 w-auto object-contain"><span class="font-semibold text-lg">Minecraft</span></a>
+                                <a href="https://www.rocketleague.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors"><img src="photos/Rocket-League-Emblem.png" alt="Rocket League Logo" class="h-10 w-auto object-contain"><span class="font-semibold text-lg">Rocket League</span></a>
+                                <a href="https://www.counter-strike.net/cs2" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors"><img src="photos/CS-logo.png" alt="CS2 Logo" class="h-10 w-auto object-contain"><span class="font-semibold text-lg">CS2</span></a>
+                                <a href="https://www.roblox.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors"><img src="photos/roblox-logo.png" alt="Roblox Logo" class="h-10 w-auto object-contain"><span class="font-semibold text-lg">Roblox</span></a>
+                                <a href="https://www.ea.com/games/f1/f1-25" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors"><img src="photos/f1-logo.png" alt="F1 25 Logo" class="h-10 w-auto object-contain"><span class="font-semibold text-lg">F1 25</span></a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Other Interests Row -->
-                    <div class="flex flex-col md:flex-row-reverse items-center bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-                        <div class="md:w-1/2">
+                    <div class="flex flex-col md:flex-row-reverse items-stretch bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                        <div class="w-full md:w-1/2">
                             <img src="photos/interests.png" alt="A scenic sunset over a hiking trail" class="w-full h-full object-cover">
                         </div>
-                        <div class="md:w-1/2 p-8 md:p-12">
+                        <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
                             <h2 class="text-3xl font-bold text-yellow-400 mb-4 flex items-center gap-3"><i class="fas fa-star"></i> Other Interests</h2>
                             <ul class="space-y-3 text-lg">
                                 <li class="flex items-center gap-3"><i class="fas fa-comments text-xl text-yellow-400/50 w-6 text-center"></i> Chatting with friends</li>
@@ -111,7 +105,6 @@
                             </ul>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -121,11 +114,11 @@
             <div class="container mx-auto px-6 text-center">
                  <h2 class="text-3xl font-bold text-center text-white mb-4">Get In Touch</h2>
                  <p class="text-gray-400 mb-8">I'm currently open to new opportunities. Feel free to reach out!</p>
-                 <div class="flex justify-center items-center gap-4">
-                    <button id="phone-btn" class="bg-cyan-500 text-gray-900 font-bold py-3 px-8 rounded-md shadow-lg shadow-cyan-500/20 hover:bg-cyan-400 transform hover:scale-105 transition-all duration-300">
+                 <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <button id="phone-btn" class="w-full sm:w-auto bg-cyan-500 text-gray-900 font-bold py-3 px-8 rounded-md shadow-lg shadow-cyan-500/20 hover:bg-cyan-400 transform hover:scale-105 transition-all duration-300">
                         View Phone
                     </button>
-                    <button id="email-btn" class="bg-cyan-500 text-gray-900 font-bold py-3 px-8 rounded-md shadow-lg shadow-cyan-500/20 hover:bg-cyan-400 transform hover:scale-105 transition-all duration-300">
+                    <button id="email-btn" class="w-full sm:w-auto bg-cyan-500 text-gray-900 font-bold py-3 px-8 rounded-md shadow-lg shadow-cyan-500/20 hover:bg-cyan-400 transform hover:scale-105 transition-all duration-300">
                         View Email
                     </button>
                  </div>
@@ -141,7 +134,6 @@
             <p id="modal-text" class="text-cyan-400 text-lg break-all"></p>
         </div>
     </div>
-
 
     <!-- Link to your external script file -->
     <script src="script.js"></script>
