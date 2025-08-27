@@ -1000,6 +1000,9 @@ function initializeWelcomeScreen() {
                 }, 500);
             });
         }
+    } else {
+        // Ensure scrolling is enabled for pages without welcome screen
+        document.body.style.overflow = 'auto';
     }
 }
 
