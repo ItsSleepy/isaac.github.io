@@ -861,9 +861,57 @@ const setupMobileMenu = (menuButtonId, mobileMenuId, closeMenuButtonId) => {
 
 // Theme Management
 function initializeTheme() {
-    // Set permanent dark mode
-    document.documentElement.setAttribute('data-theme', 'dark');
-    document.body.setAttribute('data-theme', 'dark');
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeIconMobile = document.getElementById('theme-icon-mobile');
+    
+    // Auto-detect system theme preference
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            const newTheme = e.matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+    });
+    
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+        
+        // Add smooth transition effect
+        document.body.style.transition = 'background-color 0.3s ease';
+        setTimeout(() => {
+            document.body.style.transition = '';
+        }, 300);
+    }
+    
+    function updateThemeIcon(theme) {
+        const icon = theme === 'dark' ? 'fa-sun' : 'fa-moon';
+        const color = theme === 'dark' ? 'text-yellow-400' : 'text-purple-400';
+        
+        if (themeIcon) {
+            themeIcon.className = `fas ${icon} text-lg`;
+            themeToggle.className = themeToggle.className.replace(/text-\w+-\d+/, color);
+        }
+        if (themeIconMobile) {
+            themeIconMobile.className = `fas ${icon} text-lg`;
+            themeToggleMobile.className = themeToggleMobile.className.replace(/text-\w+-\d+/, color);
+        }
+    }
+    
+    if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+    if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
 }
 
 // Loading Screen
@@ -968,12 +1016,6 @@ function initializeWelcomeScreen() {
                 setTimeout(() => {
                     welcomeScreen.style.display = 'none';
                     document.body.style.overflow = 'auto';
-                    
-                    // Show the homepage
-                    const homepage = document.getElementById('homepage');
-                    if (homepage) {
-                        homepage.classList.add('visible');
-                    }
                 }, 500);
             });
         }
@@ -985,14 +1027,6 @@ function initializeWelcomeScreen() {
                 setTimeout(() => {
                     welcomeScreen.style.display = 'none';
                     document.body.style.overflow = 'auto';
-                    
-                    // Show the homepage first
-                    const homepage = document.getElementById('homepage');
-                    if (homepage) {
-                        homepage.classList.add('visible');
-                    }
-                    
-                    // Then scroll to projects section
                     const projectsSection = document.getElementById('projects');
                     if (projectsSection) {
                         projectsSection.scrollIntoView({ behavior: 'smooth' });

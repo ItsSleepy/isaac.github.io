@@ -1,4 +1,4 @@
-/* Theme Variables - Dark Mode Only */
+/* Theme Variables */
 :root {
     --bg-primary: #0F172A;
     --bg-secondary: #1E293B;
@@ -9,6 +9,18 @@
     --accent-primary: #06B6D4;
     --accent-secondary: #0891B2;
     --border-color: #475569;
+}
+
+[data-theme="light"] {
+    --bg-primary: #F8FAFC;
+    --bg-secondary: #F1F5F9;
+    --bg-tertiary: #E2E8F0;
+    --text-primary: #0F172A;
+    --text-secondary: #334155;
+    --text-muted: #64748B;
+    --accent-primary: #0891B2;
+    --accent-secondary: #06B6D4;
+    --border-color: #CBD5E1;
 }
 
 /* Custom styles for the page */
@@ -332,6 +344,11 @@ header {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="light"] .glass-effect {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* Button Enhancement */

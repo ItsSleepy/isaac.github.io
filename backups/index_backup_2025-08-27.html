@@ -60,6 +60,7 @@
     
     <!-- Main stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
     
 </head>
 <body class="bg-gray-900 text-gray-300 transition-all duration-300" data-theme="dark">
@@ -112,9 +113,16 @@
                     <a href="about.html" class="text-gray-300 hover:text-cyan-400 px-4 py-2 rounded-md transition-colors duration-300">Personal</a>
                     <a href="#contact" class="text-gray-300 hover:text-cyan-400 px-4 py-2 rounded-md transition-colors duration-300">Contact</a>
                     <a href="#cv" class="bg-cyan-500 text-gray-900 hover:bg-cyan-400 px-4 py-2 rounded-md transition-colors duration-300 font-semibold">📄 CV</a>
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" class="ml-4 p-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition-colors duration-300 text-yellow-400">
+                        <i class="fas fa-sun text-lg" id="theme-icon"></i>
+                    </button>
                 </div>
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center gap-2">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition-colors duration-300 text-yellow-400">
+                        <i class="fas fa-sun text-lg" id="theme-icon-mobile"></i>
+                    </button>
                     <button id="mobile-menu-button" class="text-white text-2xl focus:outline-none">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -658,7 +666,23 @@
         <i class="fas fa-arrow-up text-lg"></i>
     </button>
 
-    <!-- Main JavaScript -->
-    <script src="script.js"></script>
+    <!-- Modular JavaScript Files -->
+    <!-- Core Modules -->
+    <script src="js/core/theme.js"></script>
+    <script src="js/core/navigation.js"></script>
+    <script src="js/core/welcome.js"></script>
+    
+    <!-- Feature Modules -->
+    <script src="js/features/particles.js"></script>
+    <script src="js/features/animations.js"></script>
+    <script src="js/features/modals.js"></script>
+    <script src="js/features/counters.js"></script>
+    
+    <!-- Utility Modules -->
+    <script src="js/utils/scroll.js"></script>
+    <script src="js/utils/clipboard.js"></script>
+    
+    <!-- Main Application -->
+    <script src="js/main.js"></script>
 </body>
 </html>
