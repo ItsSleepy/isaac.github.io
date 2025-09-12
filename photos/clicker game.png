@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+  <rect width="300" height="200" fill="#e8f4f8"/>
+  <text x="150" y="90" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#666">
+    CPU Chip Empire
+  </text>
+  <text x="150" y="110" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#999">
+    Clicker Game
+  </text>
+  <rect x="120" y="120" width="60" height="40" fill="none" stroke="#666" stroke-width="2"/>
+  <text x="150" y="142" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#666">CLICK</text>
+</svg>
