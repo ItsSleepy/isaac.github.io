@@ -1,9 +1,0 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
-  <rect width="300" height="200" fill="#f0fff0"/>
-  <text x="150" y="40" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#666">Image Processing</text>
-  <text x="150" y="60" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#999">Computer Vision</text>
-  <rect x="80" y="80" width="60" height="60" fill="none" stroke="#32cd32" stroke-width="2"/>
-  <rect x="160" y="80" width="60" height="60" fill="none" stroke="#32cd32" stroke-width="2"/>
-  <path d="M140 110 L160 110" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="150" y="170" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#999">PROCESS</text>
-</svg>
