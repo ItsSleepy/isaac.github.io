@@ -1,0 +1,131 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "File Organiser",
+      "description": "An automated file organization tool that sorts and categorizes files based on type, helping keep your directories clean and organized.",
+      "githubUrl": "https://github.com/yourusername/File-Organiser",
+      "liveUrl": "",
+      "technologies": "Python",
+      "iconClass": "fas fa-folder-open",
+      "gradientColors": "linear-gradient(135deg, #4A90E2, #357ABD)",
+      "displayOrder": 1
+    },
+    {
+      "id": 2,
+      "title": "Web Scraper",
+      "description": "A powerful web scraping tool designed to extract and parse data from websites efficiently for data analysis and collection.",
+      "githubUrl": "https://github.com/yourusername/Web-Scraper",
+      "liveUrl": "",
+      "technologies": "Python,BeautifulSoup",
+      "iconClass": "fas fa-spider",
+      "gradientColors": "linear-gradient(135deg, #E74C3C, #C0392B)",
+      "displayOrder": 2
+    },
+    {
+      "id": 3,
+      "title": "ChatBot",
+      "description": "An intelligent conversational AI chatbot with natural language processing capabilities for interactive user communication.",
+      "githubUrl": "https://github.com/yourusername/ChatBot",
+      "liveUrl": "",
+      "technologies": "Python,NLP",
+      "iconClass": "fas fa-robot",
+      "gradientColors": "linear-gradient(135deg, #9B59B6, #8E44AD)",
+      "displayOrder": 3
+    },
+    {
+      "id": 4,
+      "title": "PHP Website",
+      "description": "A dynamic website built with PHP featuring server-side functionality, database integration, and modern web development practices.",
+      "githubUrl": "https://github.com/yourusername/PHP-Website",
+      "liveUrl": "",
+      "technologies": "PHP,HTML,CSS",
+      "iconClass": "fab fa-php",
+      "gradientColors": "linear-gradient(135deg, #777BB4, #5D6BB3)",
+      "displayOrder": 4
+    },
+    {
+      "id": 5,
+      "title": "Multi-Tool",
+      "description": "A versatile multi-purpose utility tool providing various helpful functions and features in a single application.",
+      "githubUrl": "https://github.com/yourusername/Multi-Tool",
+      "liveUrl": "",
+      "technologies": "Python",
+      "iconClass": "fas fa-tools",
+      "gradientColors": "linear-gradient(135deg, #16A085, #138D75)",
+      "displayOrder": 5
+    },
+    {
+      "id": 6,
+      "title": "Typing Speed Test",
+      "description": "An interactive typing speed test application that measures WPM (words per minute) and accuracy to improve typing skills.",
+      "githubUrl": "https://github.com/yourusername/Typing-Speed-Test",
+      "liveUrl": "",
+      "technologies": "Python,Tkinter",
+      "iconClass": "fas fa-keyboard",
+      "gradientColors": "linear-gradient(135deg, #F39C12, #D68910)",
+      "displayOrder": 6
+    },
+    {
+      "id": 7,
+      "title": "Clicker Game",
+      "description": "An engaging incremental clicker game with progression mechanics, upgrades, and achievements for endless entertainment.",
+      "githubUrl": "https://github.com/yourusername/Clicker-Game",
+      "liveUrl": "",
+      "technologies": "Python,Pygame",
+      "iconClass": "fas fa-gamepad",
+      "gradientColors": "linear-gradient(135deg, #E67E22, #CA6F1E)",
+      "displayOrder": 7
+    },
+    {
+      "id": 8,
+      "title": "Hangman Game",
+      "description": "A classic word-guessing game built in Java featuring multiple difficulty levels and an interactive gameplay experience.",
+      "githubUrl": "https://github.com/yourusername/Hangman",
+      "liveUrl": "",
+      "technologies": "Java",
+      "iconClass": "fas fa-spell-check",
+      "gradientColors": "linear-gradient(135deg, #E74C3C, #C0392B)",
+      "displayOrder": 8
+    },
+    {
+      "id": 9,
+      "title": "MegaBot - Discord Bot",
+      "description": "A feature-rich Discord bot with 70+ slash commands across 8 categories including economy, gaming, moderation, and utility features with SQLite database integration.",
+      "githubUrl": "https://github.com/yourusername/Discord-Bot",
+      "liveUrl": "",
+      "technologies": "Python,Discord.py,SQLite",
+      "iconClass": "fab fa-discord",
+      "gradientColors": "linear-gradient(135deg, #5865F2, #4752C4)",
+      "displayOrder": 9
+    },
+    {
+      "id": 10,
+      "title": "MegaBot Website",
+      "description": "A modern marketing website for MegaBot featuring command documentation, feature showcase, and user-friendly interface built with responsive design.",
+      "githubUrl": "https://github.com/yourusername/Discord-Bot-Website",
+      "liveUrl": "",
+      "technologies": "HTML,CSS,JavaScript",
+      "iconClass": "fas fa-globe",
+      "gradientColors": "linear-gradient(135deg, #667EEA, #764BA2)",
+      "displayOrder": 10
+    }
+  ],
+  "aboutInfo": {
+    "tagline": "Student & Developer Portfolio",
+    "bio": "Hi! I'm a passionate software developer and second-year student. I love building projects that solve real-world problems and continuously learning new technologies to improve my skills.",
+    "email": "your.email@example.com",
+    "phone": "+1234567890"
+  },
+  "socialLinks": {
+    "github": "https://github.com/yourusername",
+    "instagram": "https://www.instagram.com/yourusername/",
+    "steam": "https://steamcommunity.com/id/yourusername/",
+    "discord": "https://discord.com/users/yourusername"
+  },
+  "themeColors": {
+    "primary": "#7c3aed",
+    "secondary": "#a78bfa",
+    "accent": "#c084fc"
+  }
+}

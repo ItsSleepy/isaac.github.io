@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #020617;
+            color: #e2e8f0;
+        }
+        
+        /* Login Screen Styles */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .login-box {
+            background: #0f172a;
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .login-header i {
+            font-size: 4rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .login-header h1 {
+            color: #e2e8f0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .login-header p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+        
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .form-group-login {
+            position: relative;
+        }
+        
+        .form-group-login label {
+            display: block;
+            color: #e2e8f0;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-group-login input {
+            width: 100%;
+            padding: 1rem;
+            padding-left: 3rem;
+            background: #1e293b;
+            border: 2px solid #334155;
+            border-radius: 8px;
+            color: #e2e8f0;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group-login input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        
+        .form-group-login i {
+            position: absolute;
+            left: 1rem;
+            top: 2.8rem;
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+        
+        .login-error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid #ef4444;
+            color: #ef4444;
+            padding: 1rem;
+            border-radius: 8px;
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .login-error.show {
+            display: flex;
+        }
+        
+        .btn-login {
+            padding: 1rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+        
+        .btn-login:active {
+            transform: translateY(0);
+        }
+        
+        .back-to-site {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        .back-to-site a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .back-to-site a:hover {
+            color: #6366f1;
+        }
+        
+        .admin-content {
+            display: none;
+        }
+        
+        .admin-content.show {
+            display: block;
+        }
+        
+        .dashboard-header {
+            background: #0f172a;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #334155;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .dashboard-header h1 {
+            font-size: 1.5rem;
+            color: #6366f1;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+        
+        .btn-export {
+            background: #10b981;
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: #0f172a;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #334155;
+        }
+        
+        .stat-card h3 {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #6366f1;
+        }
+        
+        .projects-section {
+            background: #0f172a;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #334155;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .projects-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .project-card {
+            background: #1e293b;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .project-info h3 {
+            color: #e2e8f0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-info p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tech-tag {
+            background: rgba(99, 102, 241, 0.2);
+            color: #6366f1;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+        }
+        
+        .action-btns {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+        
+        .btn-edit {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .btn-delete {
+            background: #ef4444;
+            color: white;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #94a3b8;
+        }
+        
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+            opacity: 0.5;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: #0f172a;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            border: 1px solid #334155;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-header h2 {
+            color: #e2e8f0;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #e2e8f0;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: #1e293b;
+            border: 2px solid #334155;
+            border-radius: 8px;
+            color: #e2e8f0;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+        
+        .help-text {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-top: 0.3rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .alert-success {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid #10b981;
+            color: #10b981;
+        }
+        
+        .alert-info {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid #3b82f6;
+            color: #3b82f6;
+        }
+        
+        /* ===== MOBILE RESPONSIVE STYLES ===== */
+        @media (max-width: 768px) {
+            /* Login Screen */
+            .login-container {
+                padding: 1rem;
+            }
+            
+            .login-box {
+                padding: 2rem 1.5rem;
+            }
+            
+            .login-header i {
+                font-size: 3rem;
+            }
+            
+            .login-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            /* Dashboard Header */
+            .dashboard-header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .dashboard-header h1 {
+                font-size: 1.25rem;
+            }
+            
+            .header-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .header-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            /* Container */
+            .container {
+                padding: 1rem;
+            }
+            
+            /* Stats Grid */
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            /* Project Cards */
+            .project-card {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .project-card > div:first-child {
+                display: none; /* Hide icon on mobile to save space */
+            }
+            
+            .action-btns {
+                width: 100%;
+                justify-content: stretch;
+            }
+            
+            .action-btns .btn {
+                flex: 1;
+            }
+            
+            /* Section Header */
+            .section-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+            
+            .section-header h2 {
+                font-size: 1.25rem;
+            }
+            
+            .section-header .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            /* Modal */
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            
+            .modal-header h2 {
+                font-size: 1.25rem;
+            }
+            
+            /* Form Row - Stack on Mobile */
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Form Actions */
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .form-actions .btn {
+                width: 100%;
+            }
+            
+            /* Tech Tags */
+            .tech-tags {
+                gap: 0.3rem;
+            }
+            
+            .tech-tag {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.6rem;
+            }
+            
+            /* Buttons */
+            .btn {
+                font-size: 0.85rem;
+                padding: 0.7rem 1.2rem;
+            }
+            
+            .btn-sm {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.75rem;
+            }
+            
+            /* Projects Section */
+            .projects-section {
+                padding: 1rem;
+            }
+            
+            /* Alert */
+            .alert {
+                font-size: 0.85rem;
+                padding: 0.75rem;
+            }
+            
+            /* Stat Value */
+            .stat-value {
+                font-size: 1.5rem;
+            }
+            
+            /* Theme Grid */
+            .theme-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
+        /* Extra Small Devices (phones < 480px) */
+        @media (max-width: 480px) {
+            .login-box {
+                padding: 1.5rem 1rem;
+            }
+            
+            .login-header i {
+                font-size: 2.5rem;
+            }
+            
+            .login-header h1 {
+                font-size: 1.25rem;
+            }
+            
+            .dashboard-header h1 {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                font-size: 0.8rem;
+                padding: 0.6rem 1rem;
+            }
+            
+            .project-info h3 {
+                font-size: 1rem;
+            }
+            
+            .project-info p {
+                font-size: 0.85rem;
+            }
+            
+            .modal-content {
+                width: 100%;
+                margin: 0;
+                border-radius: 0;
+                max-height: 100vh;
+            }
+        }
+        
+        /* Improve touch targets on mobile */
+        @media (hover: none) and (pointer: coarse) {
+            .btn,
+            button,
+            a {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            input,
+            textarea {
+                font-size: 16px !important; /* Prevents zoom on iOS */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <i class="fas fa-shield-alt"></i>
+                <h1>Admin Login</h1>
+                <p>Enter your password to access the admin panel</p>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <div class="login-error" id="loginError">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>Incorrect password. Please try again.</span>
+                </div>
+                
+                <div class="form-group-login">
+                    <label for="adminPassword">Password</label>
+                    <i class="fas fa-lock"></i>
+                    <input 
+                        type="password" 
+                        id="adminPassword" 
+                        placeholder="Enter admin password"
+                        required
+                        autocomplete="current-password"
+                    >
+                </div>
+                
+                <button type="submit" class="btn-login">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login to Admin Panel
+                </button>
+                
+                <div class="back-to-site">
+                    <a href="index.html">
+                        <i class="fas fa-arrow-left"></i> Back to Portfolio
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Admin Content (Hidden until login) -->
+    <div id="adminContent" class="admin-content">
+        <div class="dashboard-header">
+            <h1><i class="fas fa-dashboard"></i> Admin Panel</h1>
+            <div class="header-actions">
+                <button onclick="exportProjects()" class="btn btn-export">
+                    <i class="fas fa-download"></i> Export Projects
+                </button>
+                <a href="index.html" class="btn btn-secondary" target="_blank">
+                    <i class="fas fa-eye"></i> View Site
+                </a>
+                <button onclick="logout()" class="btn btn-secondary">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Projects</h3>
+                <div class="stat-value" id="totalProjects">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Active Projects</h3>
+                <div class="stat-value" id="activeProjects">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Technologies</h3>
+                <div class="stat-value" id="totalTech">0</div>
+            </div>
+        </div>
+        
+        <div class="projects-section">
+            <div class="section-header">
+                <h2><i class="fas fa-folder"></i> Manage Projects</h2>
+                <button onclick="openAddModal()" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Add New Project
+                </button>
+            </div>
+            
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> Projects are stored in Supabase database and sync across all devices. Click "Export Projects" to download a backup JSON file.
+            </div>
+            
+            <div id="projectsList" class="projects-grid">
+                <!-- Projects will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Theme Customizer Section -->
+        <div class="projects-section" style="margin-top: 2rem;">
+            <div class="section-header">
+                <h2><i class="fas fa-palette"></i> Theme Customizer</h2>
+            </div>
+            
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> Customize your portfolio's color scheme. Changes are saved automatically.
+            </div>
+            
+            <div class="theme-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+                <div class="form-group">
+                    <label for="primaryColor">Primary Color</label>
+                    <input type="color" id="primaryColor" value="#6366f1" onchange="updateThemeColor('primary', this.value)">
+                </div>
+                <div class="form-group">
+                    <label for="secondaryColor">Secondary Color</label>
+                    <input type="color" id="secondaryColor" value="#8b5cf6" onchange="updateThemeColor('secondary', this.value)">
+                </div>
+                <div class="form-group">
+                    <label for="accentColor">Accent Color</label>
+                    <input type="color" id="accentColor" value="#a78bfa" onchange="updateThemeColor('accent', this.value)">
+                </div>
+            </div>
+            
+            <button onclick="resetThemeColors()" class="btn btn-secondary" style="margin-top: 1rem;">
+                <i class="fas fa-undo"></i> Reset to Default Colors
+            </button>
+        </div>
+
+        <!-- About Me Editor Section -->
+        <div class="projects-section" style="margin-top: 2rem;">
+            <div class="section-header">
+                <h2><i class="fas fa-user-edit"></i> About Me Editor</h2>
+            </div>
+            
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> Edit your bio, tagline, and contact information.
+            </div>
+            
+            <div class="form-group">
+                <label for="heroTagline">Hero Tagline</label>
+                <input type="text" id="heroTagline" placeholder="Student & Developer Portfolio">
+            </div>
+            
+            <div class="form-group">
+                <label for="aboutBio">About Me Bio</label>
+                <textarea id="aboutBio" rows="6" placeholder="Write your bio here..."></textarea>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="contactEmail">Email Address</label>
+                    <input type="email" id="contactEmail" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="contactPhone">Phone Number</label>
+                    <input type="tel" id="contactPhone" placeholder="+1234567890">
+                </div>
+            </div>
+            
+            <button onclick="saveAboutInfo()" class="btn btn-primary">
+                <i class="fas fa-save"></i> Save About Info
+            </button>
+        </div>
+
+        <!-- Social Links Manager Section -->
+        <div class="projects-section" style="margin-top: 2rem;">
+            <div class="section-header">
+                <h2><i class="fas fa-share-alt"></i> Social Links Manager</h2>
+            </div>
+            
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> Update your social media links and contact information.
+            </div>
+            
+            <div class="form-group">
+                <label for="githubUrl"><i class="fab fa-github"></i> GitHub URL</label>
+                <input type="url" id="githubUrl" placeholder="https://github.com/yourusername">
+            </div>
+            
+            <div class="form-group">
+                <label for="instagramUrl"><i class="fab fa-instagram"></i> Instagram URL</label>
+                <input type="url" id="instagramUrl" placeholder="https://instagram.com/yourusername">
+            </div>
+            
+            <div class="form-group">
+                <label for="steamUrl"><i class="fab fa-steam"></i> Steam Profile URL</label>
+                <input type="url" id="steamUrl" placeholder="https://steamcommunity.com/id/yourid">
+            </div>
+            
+            <div class="form-group">
+                <label for="discordTag"><i class="fab fa-discord"></i> Discord Tag</label>
+                <input type="text" id="discordTag" placeholder="YourUsername#1234">
+            </div>
+            
+            <button onclick="saveSocialLinks()" class="btn btn-primary">
+                <i class="fas fa-save"></i> Save Social Links
+            </button>
+        </div>
+
+        <!-- Project Categories Section -->
+        <div class="projects-section" style="margin-top: 2rem;">
+            <div class="section-header">
+                <h2><i class="fas fa-tags"></i> Project Categories</h2>
+                <button onclick="openCategoryModal()" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Add Category
+                </button>
+            </div>
+            
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> Create custom categories to organize your projects (Web, Mobile, Games, Tools, etc.).
+            </div>
+            
+            <div id="categoriesList" class="projects-grid">
+                <!-- Categories will be loaded here -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Category Modal -->
+    <div id="categoryModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add/Edit Category</h2>
+                <button class="close-modal" onclick="closeCategoryModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form id="categoryForm" onsubmit="saveCategory(event)">
+                <div class="form-group">
+                    <label for="categoryName">Category Name *</label>
+                    <input type="text" id="categoryName" required placeholder="e.g., Web Development">
+                </div>
+                
+                <div class="form-group">
+                    <label for="categoryIcon">Icon Class</label>
+                    <input type="text" id="categoryIcon" placeholder="fas fa-globe">
+                    <div class="help-text">FontAwesome icon class</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="categoryColor">Category Color</label>
+                    <input type="color" id="categoryColor" value="#6366f1">
+                </div>
+                
+                <input type="hidden" id="categoryId">
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Save Category
+                    </button>
+                    <button type="button" onclick="closeCategoryModal()" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add/Edit Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add New Project</h2>
+                <button class="close-modal" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form id="projectForm" onsubmit="saveProject(event)">
+                <div class="form-group">
+                    <label for="title">Project Title *</label>
+                    <input type="text" id="title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Description *</label>
+                    <textarea id="description" required></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="githubUrl">GitHub URL *</label>
+                        <input type="url" id="githubUrl" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="liveUrl">Live Demo URL (Optional)</label>
+                        <input type="url" id="liveUrl">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="technologies">Technologies (comma-separated) *</label>
+                    <input type="text" id="technologies" required>
+                    <div class="help-text">Example: React,Node.js,MongoDB</div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="iconClass">FontAwesome Icon Class</label>
+                        <input type="text" id="iconClass" value="fas fa-code">
+                        <div class="help-text">Example: fas fa-laptop-code</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="displayOrder">Display Order</label>
+                        <input type="number" id="displayOrder" value="0">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="gradientColors">Gradient Background</label>
+                    <input type="text" id="gradientColors" value="linear-gradient(135deg, #6366f1, #8b5cf6)">
+                    <div class="help-text">CSS gradient code</div>
+                </div>
+                
+                <input type="hidden" id="projectId">
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Save Project
+                    </button>
+                    <button type="button" onclick="closeModal()" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <!-- End Admin Content -->
+    
+    <!-- Supabase Library from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Supabase Configuration -->
+    <script src="config.js"></script>
+    <!-- Admin Script -->
+    <script src="admin.js"></script>
+</body>
+</html>
